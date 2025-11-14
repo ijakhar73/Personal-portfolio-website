@@ -1,0 +1,187 @@
+/* style.css - Single stylesheet for the whole site
+   Font: Inter (imported in each HTML head)
+   Light, simple, high-contrast colors compatible with your profile picture
+*/
+
+:root{
+  --bg: #f6f6f3;            /* soft warm grey background */
+  --card: #ffffff;          /* card background */
+  --text: #111213;          /* near-black text for contrast */
+  --muted: #666b6c;         /* muted text */
+  --accent: #cdbb95;        /* warm beige accent */
+  --accent-dark: #a8906f;   /* darker accent for borders */
+  --primary: #1f2a2b;       /* deep charcoal for headings/nav */
+  --radius: 10px;
+  --max-width: 1000px;
+}
+
+* { box-sizing: border-box; }
+html,body{ height:100%; margin:0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); }
+
+.container{
+  max-width:var(--max-width);
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* NAV */
+.site-header{
+  background: var(--primary);
+  color: white;
+  padding: 16px 0;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.site-header .container {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.brand{
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:0.3px;
+}
+.nav{
+  margin-left: 18px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.nav a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:8px;
+  border:2px solid rgba(255,255,255,0.18);
+  font-weight:600;
+}
+.nav a:hover{
+  background: rgba(255,255,255,0.12);
+}
+.nav a.active{
+  background: var(--accent);
+  color: var(--primary);
+  border-color: var(--accent-dark);
+}
+
+/* Header spacing under nav */
+.header-spacer{ height:18px; }
+
+/* Home hero */
+.hero{
+  text-align:center;
+  padding:36px 12px;
+}
+.profile-pic{
+  width:160px;
+  height:160px;
+  margin: 0 auto 18px auto;
+  border-radius:50%;
+  overflow:hidden;
+  border:6px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(31,42,43,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(240,240,240,0.6));
+}
+.profile-pic img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* Titles */
+h1.page-title{
+  margin:10px 0 4px;
+  color:var(--primary);
+  font-size:28px;
+}
+.lead{
+  color:var(--muted);
+  max-width:780px;
+  margin:10px auto;
+  line-height:1.6;
+}
+
+/* cards grid used on projects/education */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:28px;
+  margin-top:26px;
+}
+@media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  border:1px solid rgba(31,36,36,0.06);
+  box-shadow: 0 6px 18px rgba(31,42,43,0.03);
+}
+.card img{
+  width:100%;
+  border-radius:8px;
+  display:block;
+}
+.card h3{ margin:14px 0 8px; color:var(--primary); font-size:18px; }
+.card p{ color:var(--muted); line-height:1.6; font-size:15px; }
+
+/* Education & Skills layout */
+.edu-row{ display:flex; gap:20px; align-items:flex-start; }
+.edu-left, .edu-right{ flex:1; }
+.skill-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.skill{
+  background: #fff;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.05);
+  font-weight:600;
+  color:var(--primary);
+  font-size:14px;
+}
+
+/* small details */
+.small-muted{ color:var(--muted); font-size:14px; }
+
+/* Contact form */
+.contact-form{
+  display:grid;
+  gap:12px;
+}
+input[type="text"], input[type="email"], textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.08);
+  font-size:15px;
+  background: #fff;
+}
+textarea{ min-height:120px; resize:vertical; }
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  background:var(--primary);
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  border: none;
+  cursor:pointer;
+}
+.btn.secondary{ background:var(--accent); color:var(--primary); }
+
+/* footer */
+.site-footer{
+  margin-top:34px;
+  text-align:center;
+  color:var(--muted);
+  padding:28px 0;
+  font-size:14px;
+}
+
+/* simple utility */
+.row{ display:flex; gap:12px; align-items:center; }
+.center{ text-align:center; }
+
+/* responsiveness tweaks for nav on small screens */
+@media (max-width:720px){
+  .site-header .container{ flex-direction:column; align-items:flex-start; gap:12px; }
+  .nav{ order:2; flex-wrap:wrap; }
+  .hero{ padding:24px 12px; }
+}
